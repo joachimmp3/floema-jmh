@@ -1,6 +1,6 @@
-import GSAP from 'gsap';
-import Button from 'classes/Button';
-import Page from 'classes/Page';
+import GSAP from 'gsap'
+import Button from 'classes/Button'
+import Page from 'classes/Page'
 
 export default class Detail extends Page {
   constructor() {
@@ -10,21 +10,21 @@ export default class Detail extends Page {
       elements: {
         button: '.detail__button',
       },
-    });
+    })
   }
 
   create() {
-    super.create();
+    super.create()
 
     this.link = new Button({
       element: this.elements.button,
-    });
+    })
   }
 
   show() {
     const timeline = GSAP.timeline({
       delay: 2,
-    });
+    })
 
     timeline.fromTo(
       this.element,
@@ -34,14 +34,14 @@ export default class Detail extends Page {
       {
         autoAlpha: 1,
       }
-    );
+    )
 
-    super.show(timeline);
+    super.show(timeline)
   }
 
   destroy() {
-    super.destroy();
+    super.destroy()
 
-    this.link.removeEventListeners();
+    this.link.removeEventListeners()
   }
 }

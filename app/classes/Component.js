@@ -1,29 +1,30 @@
-/* eslint-disable no-unused-vars */
-import EventEmitter from 'events';
-import each from 'lodash/each';
+/* eslint-disable no-undef */ 
+
+import EventEmitter from 'events'
+import each from 'lodash/each'
 
 export default class Component extends EventEmitter {
   constructor({ element, elements }) {
-    super();
+    super()
 
-    this.selector = element;
+    this.selector = element
     this.selectorChildren = {
       ...elements,
-    };
+    }
 
-    this.create();
+    this.create()
 
-    this.addEventListeners();
+    this.addEventListeners()
   }
 
   create() {
     if (this.selector instanceof window.HTMLElement) {
-      this.element = this.selector;
+      this.element = this.selector
     } else {
-      this.element = document.querySelector(this.selector);
+      this.element = document.querySelector(this.selector)
     }
 
-    this.elements = {};
+    this.elements = {}
 
     each(this.selectorChildren, (entry, key) => {
       if (
@@ -31,17 +32,17 @@ export default class Component extends EventEmitter {
         entry instanceof window.NodeList ||
         Array.isArray(entry)
       ) {
-        this.elements[key] = entry;
+        this.elements[key] = entry
       } else {
-        this.elements[key] = document.querySelectorAll(entry);
+        this.elements[key] = document.querySelectorAll(entry)
 
         if (this.elements[key].length === 0) {
-          this.elements[key] = null;
+          this.elements[key] = null
         } else if (this.elements[key].length === 1) {
-          this.elements[key] = document.querySelector(entry);
+          this.elements[key] = document.querySelector(entry)
         }
       }
-    });
+    })
   }
 
   addEventListeners() {}

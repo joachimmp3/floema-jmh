@@ -1,26 +1,28 @@
-import Component from 'classes/Component';
+/* eslint-disable no-undef */ 
+
+import Component from 'classes/Component'
 
 export default class Animation extends Component {
   constructor({ element, elements }) {
-    super({ element, elements });
+    super({ element, elements })
 
-    this.createObserver();
+    this.createObserver()
 
-    this.animateOut();
+    this.animateOut()
   }
 
   createObserver() {
     this.observer = new window.IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          this.animateIn();
+          this.animateIn()
         } else {
-          this.animateOut();
+          this.animateOut()
         }
-      });
-    });
+      })
+    })
 
-    this.observer.observe(this.element);
+    this.observer.observe(this.element)
   }
 
   animateIn() {}

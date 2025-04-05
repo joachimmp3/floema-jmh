@@ -1,5 +1,7 @@
-import Button from 'classes/Button';
-import Page from 'classes/Page';
+/* eslint-disable no-undef */ 
+
+import Button from 'classes/Button'
+import Page from 'classes/Page'
 
 export default class Home extends Page {
   constructor() {
@@ -10,11 +12,11 @@ export default class Home extends Page {
         navigation: document.querySelector('.navigation'),
         link: '.home__link',
       },
-    });
+    })
   }
 
   create() {
-    super.create();
+    super.create()
 
     this.link = new Button ({
       element: this.elements.link

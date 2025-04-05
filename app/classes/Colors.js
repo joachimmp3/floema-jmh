@@ -1,4 +1,6 @@
-import GSAP from 'gsap';
+/* eslint-disable no-undef */ 
+
+import GSAP from 'gsap'
 
 class Colors {
   change({ backgroundColor, color }) {
@@ -6,8 +8,8 @@ class Colors {
       background: backgroundColor,
       color,
       duration: 1.5,
-    });
+    })
   }
 }
 
-export const ColorsManager = new Colors();
+export const ColorsManager = new Colors()

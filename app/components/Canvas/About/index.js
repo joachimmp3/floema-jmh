@@ -1,38 +1,39 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-useless-return */
-import { Plane, Transform } from 'ogl';
+/* eslint-disable no-undef */ 
 
-import GSAP from 'gsap';
+import { Plane, Transform } from 'ogl'
 
-import map from 'lodash/map';
+import GSAP from 'gsap'
 
-import Gallery from './Gallery';
+import map from 'lodash/map'
+
+import Gallery from './Gallery'
 
 export default class {
   constructor({ gl, scene, sizes }) {
-    this.gl = gl;
-    this.sizes = sizes;
+    this.gl = gl
+    this.sizes = sizes
 
-    this.group = new Transform();
+    this.group = new Transform()
 
-    this.createGeometry();
-    this.createGalleries();
+    this.createGeometry()
+    this.createGalleries()
 
     this.onResize({
       sizes: this.sizes,
-    });
+    })
 
-    this.group.setParent(scene);
+    this.group.setParent(scene)
 
-    this.show();
+    this.show()
   }
 
   createGeometry() {
-    this.geometry = new Plane(this.gl);
+    this.geometry = new Plane(this.gl)
   }
 
   createGalleries() {
-    this.galleriesElements = document.querySelectorAll('.about__gallery');
+    this.galleriesElements = document.querySelectorAll('.about__gallery')
 
     this.galleries = map(this.galleriesElements, (element, index) => {
       return new Gallery({
@@ -42,35 +43,35 @@ export default class {
         gl: this.gl,
         scene: this.group,
         sizes: this.sizes,
-      });
-    });
+      })
+    })
   }
 
   // Animations
   show() {
-    map(this.galleries, (gallery) => gallery.show());
+    map(this.galleries, (gallery) => gallery.show())
   }
 
   hide() {
-    map(this.galleries, (gallery) => gallery.hide());
+    map(this.galleries, (gallery) => gallery.hide())
   }
 
   // Events
 
   onResize(e) {
-    map(this.galleries, (gallery) => gallery.onResize(e));
+    map(this.galleries, (gallery) => gallery.onResize(e))
   }
 
   onTouchDown(e) {
-    map(this.galleries, (gallery) => gallery.onTouchDown(e));
+    map(this.galleries, (gallery) => gallery.onTouchDown(e))
   }
 
   onTouchMove(e) {
-    map(this.galleries, (gallery) => gallery.onTouchMove(e));
+    map(this.galleries, (gallery) => gallery.onTouchMove(e))
   }
 
   onTouchUp(e) {
-    map(this.galleries, (gallery) => gallery.onTouchUp(e));
+    map(this.galleries, (gallery) => gallery.onTouchUp(e))
   }
 
   onWheel({ pixelX, pixelY }) {}
@@ -78,11 +79,11 @@ export default class {
   // Update
 
   update(scroll) {
-    map(this.galleries, (gallery) => gallery.update(scroll));
+    map(this.galleries, (gallery) => gallery.update(scroll))
   }
 
   // Destroy
   destroy() {
-    map(this.galleries, (gallery) => gallery.destroy());
+    map(this.galleries, (gallery) => gallery.destroy())
   }
 }
